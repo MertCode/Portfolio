@@ -9,6 +9,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  cursor: none;
 }
 
 html {
@@ -112,12 +113,13 @@ a:hover {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: rgba(255, 255, 255, 0); /* Transparent background */
+  background-color: rgb(255, 255, 255); /* Transparent background */
   width: fit-content;
   visibility: hidden; /* Initially hidden */
   opacity: 0; /* Initially transparent */
   transition: visibility 0s, opacity 0.3s ease-in-out; /* Smooth transition for opacity */
   border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* Add shadow */
 }
 
 /* Updated .menu-links.open styling */
@@ -184,6 +186,8 @@ section {
 .section__text {
   align-self: center;
   text-align: center;
+  z-index: 1;
+  flex-grow: 0;
 }
 
 .section__text p {
@@ -461,4 +465,117 @@ footer p {
 u {
   text-decoration-color: rgb(0, 0, 0);
   text-underline-offset: 0.2rem;
+}
+h1:hover {
+  cursor: crosshair;
+  color: white;
+}
+h1::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  color: white;
+}
+
+h1:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+  color: white;
+}
+
+h1::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inset: 0 0 0 0;
+  background: #000000;
+  opacity: 1;
+  z-index: -1;
+  transition: transform 0.3s ease;
+  color: white;
+}
+
+h1 {
+  position: relative;
+  font-size: 5rem;
+  transition: color 0.3s ease;
+}
+
+html {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+@media (orientation: landscape) {
+  body {
+    grid-auto-flow: column;
+  }
+}
+.mscursor-cursor {
+  pointer-events: none;
+  position: fixed;
+  display: block;
+  border-radius: 0;
+  top: 0;
+  left: 0;
+  z-index: 9999999999999999;
+}
+
+.mscursor-difference {
+  mix-blend-mode: difference;
+}
+
+.mscursor-circle {
+  transform-origin: center;
+  position: absolute;
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 20px;
+}
+
+.mscursor-border-transform {
+  animation: border-transform 3s linear infinite;
+}
+
+@keyframes border-transform {
+  0%,
+  100% {
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+  }
+  14% {
+    border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%;
+  }
+  28% {
+    border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
+  }
+  42% {
+    border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
+  }
+  56% {
+    border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
+  }
+  70% {
+    border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
+  }
+  84% {
+    border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
+  }
+}
+
+.mscursor-scale {
+  transition: 0.5s ease;
+  transform: scale(1.6);
+}
+
+.mscursor-scale-outline {
+  transform: scale(1.9);
+  background-color: transparent !important;
+}
+
+.mscursor-nocursor {
+  cursor: none !important;
 }
